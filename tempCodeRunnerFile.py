@@ -1,0 +1,1 @@
+list_of_lists = [[int(int(j)) for j in i] for i in list_of_lists]

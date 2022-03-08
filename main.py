@@ -14,11 +14,11 @@ list_of_lists = [[int(int(j)) for j in i] for i in list_of_lists]
 
 print(list_of_lists)
 
-# making variables out of the list of lists
+# making GLOBAL variables out of the list of lists
 NUM_CITIES = list_of_lists[0][0]
 NUM_WAREHOUSES = list_of_lists[0][1]
 NUM_ROADS = list_of_lists[0][2]
-
+print(NUM_CITIES)
 
 # A class to represent the adjacency list of the node
 
@@ -68,7 +68,39 @@ for pair in graph_data:
     graph.add_edge(pair[0], pair[1])
 graph.print_graph()
 
-# assign value to the nodes
-
+# assign value to the warehouse nodes
+# number of item X, delivery fee per km and location of warehouse
+# how do I assign values to the warehouse nodes? Can I just access the nodes via the list? create a for-loop to initialise
 warehouse_data = list_of_lists[NUM_ROADS+1:NUM_ROADS+NUM_WAREHOUSES+1]
+print(warehouse_data)
+
+
+# assign value to the order nodes
+num_of_orders = list_of_lists[NUM_ROADS+NUM_WAREHOUSES+1][0]
+
+order_list = list_of_lists[NUM_ROADS+NUM_WAREHOUSES+2:NUM_ROADS+NUM_WAREHOUSES+2+num_of_orders]
+print(order_list)
+
+node_order_ls = []
+node_order_amt_ls = []
+
+for order in order_list:
+    node_order_ls.append(order[1])
+    node_order_amt_ls.append(order[0])
+
+print(node_order_ls)
+print(node_order_amt_ls)
+
+order_dict = {}
+for (node_order_ls, node_order_amt_ls) in zip(node_order_ls,node_order_amt_ls):
+    if node_order_ls in order_dict.keys():
+        #if the value is already in list, add current score to the sum
+        order_dict[node_order_ls] += node_order_amt_ls
+    else:
+        #if the value is not yet in list, create an entry
+        order_dict[node_order_ls] = node_order_amt_ls
+
+print(order_dict)
+
+### finished extracting values and assigning values to the nodes ###
 
