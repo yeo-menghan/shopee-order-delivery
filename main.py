@@ -1,3 +1,6 @@
+# library for int max
+import sys
+
 # read through the text file, convert it into a giant list of lists and make meaning out of it
 
 a_file = open("text.txt", "r")
@@ -30,7 +33,7 @@ class AdjNode:
 
 # A graph is the list of the adjacency lists.
 # Size of the array will be the no. of vertices "V"
-class Graph:
+class Graph():
     def __init__(self, vertices):
         self.V = vertices
         self.graph = [None] * self.V
@@ -68,12 +71,10 @@ for pair in graph_data:
     graph.add_edge(pair[0], pair[1])
 graph.print_graph()
 
-# assign value to the warehouse nodes
+# assign value to the warehouse nodes via a dictionary
 # number of item X, delivery fee per km and location of warehouse
-# how do I assign values to the warehouse nodes? Can I just access the nodes via the list? create a for-loop to initialise
 warehouse_data = list_of_lists[NUM_ROADS+1:NUM_ROADS+NUM_WAREHOUSES+1]
 print(warehouse_data)
-
 
 # assign value to the order nodes
 num_of_orders = list_of_lists[NUM_ROADS+NUM_WAREHOUSES+1][0]
@@ -104,3 +105,12 @@ print(order_dict)
 
 ### finished extracting values and assigning values to the nodes ###
 
+# find shortest pathways from warehouse nodes to order nodes via Dijkstra's shortest path algo
+# consider the cost efficiency by considering cost / km
+
+
+
+# serve the node with the least number of connected nodes - compare the distance away from each warehouse
+
+
+# consider inventory of each warehouse and rank the delivery route
